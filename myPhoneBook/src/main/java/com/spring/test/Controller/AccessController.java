@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.spring.test.DAO.ContactRepository;
-import com.spring.test.DAO.UserRepository;
+import com.spring.test.dao.ContactRepository;
+import com.spring.test.dao.UserRepository;
 import com.spring.test.entities.Contact;
 import com.spring.test.entities.User;
 import com.spring.test.helper.Message;

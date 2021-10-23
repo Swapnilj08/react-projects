@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.test.EmailService;
-import com.spring.test.DAO.UserRepository;
+import com.spring.test.dao.UserRepository;
 import com.spring.test.entities.User;
 import com.spring.test.helper.Message;
 

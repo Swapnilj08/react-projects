@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,10 +18,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public UserDetailsService getUserDetailService() {
 		return new UserDetailsServiceImpl();
 	}
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 
@@ -40,13 +41,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
 	}
+
 //method to define permission of user and urls or to configure it
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
-		.antMatchers("/user/**").hasRole("USER")
-		.antMatchers("/**").permitAll()
-		.and().formLogin().loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/user/index").and().csrf().disable();
+		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/user/**").hasRole("USER")
+				.antMatchers("/**").permitAll().and().formLogin().loginPage("/login").loginProcessingUrl("/login")
+				.defaultSuccessUrl("/user/index").and().csrf().disable();
 	}
 
 }

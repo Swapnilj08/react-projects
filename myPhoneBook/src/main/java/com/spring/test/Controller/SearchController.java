@@ -1,4 +1,4 @@
-package com.spring.test.dao;
+package com.spring.test.Controller;
 
 import java.security.Principal;
 import java.util.List;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.test.dao.ContactRepository;
+import com.spring.test.dao.UserRepository;
 import com.spring.test.entities.Contact;
 import com.spring.test.entities.User;
 

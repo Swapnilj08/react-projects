@@ -1,4 +1,4 @@
-package com.spring.test.DAO;
+package com.spring.test.dao;
 
 import java.util.List;
 
@@ -12,14 +12,15 @@ import com.spring.test.entities.Contact;
 import com.spring.test.entities.User;
 
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
-//To implement Pagination
 
-//Pageble contains info of:1>current pagenumber
-//				           2>number of contact per page
 	
-@Query("from Contact as c where c.user.id=:userId")
-public Page<Contact> findcontactByUser(@Param("userId")int userId,Pageable pagable);
+	//To implement Pagination
+	//Pageble contains info of:1>current pagenumber
+	//				           2>number of contact per page
 
-public List<Contact> findByNameContainingAndUser(String query,User user);
+	@Query("from Contact as c where c.user.id=:userId")
+	public Page<Contact> findcontactByUser(@Param("userId") int userId, Pageable pagable);
+
+	public List<Contact> findByNameContainingAndUser(String query, User user);
 
 }

@@ -6,13 +6,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.1</version>
+		<version>2.5.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.spring.test</groupId>
-	<artifactId>smartContactManager</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>smartContactManager</name>
+	<artifactId>myPhoneBook</artifactId>
+	<version>0.0.1-snapshot</version>
+	<name>myPhoneBook</name>
 	<description>project to check thymleaf</description>
 
 	<properties>
@@ -88,6 +89,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>swapnilj08/phonebook:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+				</configuration>		
 			</plugin>
 		</plugins>
 	</build>

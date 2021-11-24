@@ -54,6 +54,7 @@ public class AccessController {
 		model.addAttribute("user", user);
 	}
 
+	// user Home page handler
 	@RequestMapping("/index")
 	public String normalUser(Model model, Principal principle) {
 		// To get THe Name of logged-in User
@@ -66,10 +67,10 @@ public class AccessController {
 
 	}
 
+	// add contact page handler
 	@GetMapping("/addContact")
 	public String addContact(Model model) {
 		model.addAttribute("title", "Add Contact Page");
-		// model.addAttribute("contact", new Contact());
 
 		return "normal/addContact";
 	}
@@ -128,7 +129,6 @@ public class AccessController {
 		return "normal/addContact";
 	}
 
-
 	@GetMapping("/showContacts/{page}")
 	public String showcontact(@PathVariable("page") Integer page, Model model, Principal principal) {
 		model.addAttribute("title", "Show Contacts");
@@ -181,8 +181,6 @@ public class AccessController {
 		User user = userRepository.getByName(name);
 		if (user.getId() == contact.getUser().getId()) {
 
-			// unlink contact with user table (without it contact will not get deleted
-			// coz we have used cascade = CascadeType.ALL while one to many mapping)
 			contact.setUser(null);
 			try {
 				// deleting image of contact

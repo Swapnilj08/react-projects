@@ -25,14 +25,14 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	
+	// home page Handler
 	@GetMapping("/")
 	public String start() {
-		System.out.println("Home method called");
+
 		return "home";
 	}
 
-	// Method for about page
+	// about page Handler
 	@RequestMapping("/about")
 	public String about(Model model) {
 		model.addAttribute("data", "This is dynamic message" + "and here it is second message");
@@ -40,7 +40,7 @@ public class UserController {
 		return "about";
 	}
 
-	// Method for SignUp Page
+	// SignUp Page Handler
 	@RequestMapping("/signup")
 	public String signup(Model model) {
 		model.addAttribute("data", "This is Signup Page");
@@ -48,7 +48,7 @@ public class UserController {
 		return "signup";
 	}
 
-	// @RequestMapping(value = "/do_register", method = RequestMethod.POST)
+	// register handler
 	@PostMapping("/do_register")
 	public String register(@Valid @ModelAttribute("user") User user, BindingResult bindresult,
 			@RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model,
@@ -65,7 +65,7 @@ public class UserController {
 				return "signup";
 			}
 
-			//set role
+			// set role
 			user.setRole("User");
 			user.setActivity(true);
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -74,30 +74,26 @@ public class UserController {
 			System.out.println("Agree:" + agreement);
 			User result = userRepository.save(user);
 			model.addAttribute("user", new User());
-			// alert-danger(bootstrap command to display message in green color search alert
-			// in bootstrap site)
+
 			session.setAttribute("message", new Message("Registration Successful !!!", "alert-success"));
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			// to keep old fields
+			// keep old fields
 			model.addAttribute("user", user);
 
-			// alert-danger(bootstrap command to display message in red color search alert
-			// in bootstrap site)
 			session.setAttribute("message", new Message("Somthing went wrong !!! " + e.getMessage(), "alert-danger"));
 			return "signup";
 		}
 		return "signup";
 
 	}
-	
+
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("loginpage", "This is Login Page");
-	
-	return "login";
+
+		return "login";
 	}
-	
 
 }

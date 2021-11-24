@@ -14,14 +14,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		//fetching user from database
+		// fetching user from database
 		User user = userRepository.getUserByName(username);
-		
-		System.out.println("UserDetailsServiceImpl class"+user);
-		if (user==null) {
+
+		System.out.println("UserDetailsServiceImpl class" + user);
+		if (user == null) {
 			throw new UsernameNotFoundException("Could not Found User");
 		}
-		 CostumUserDetails userDetails = new CostumUserDetails(user);
+		CostumUserDetails userDetails = new CostumUserDetails(user);
 		return userDetails;
 	}
 

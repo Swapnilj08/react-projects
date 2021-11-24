@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
 <head>
-	<meta charset="UTF-8" />
-	<title>about</title>
+<meta charset="UTF-8" />
+<title>about</title>
 </head>
 <body>
-<section>
-	<div class="container ">
-		<div class="card ">
+	<section>
+		<div class="container ">
+			<div class="card ">
 
 				<div class="card-body text-center">
 					<img style="height: 200px; width: 200px;"
@@ -53,8 +54,8 @@
 
 				</div>
 			</div>
-	</div>
-	 <script>
+		</div>
+		<script>
             $(document).ready(() => {
                 $(".item").removeClass("active");
                 $("#profile-link").addClass("active");

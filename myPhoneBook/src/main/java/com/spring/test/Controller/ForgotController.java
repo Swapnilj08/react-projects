@@ -28,10 +28,12 @@ public class ForgotController {
 	@Autowired
 	private EmailService emailService;
 	
+	//Forgot password page handler
 	@RequestMapping("/forgot")
 	public String forgotpassword() {
 		return "forgotpassword";
 	}
+	//send OTP Handler
 	@PostMapping("/sendotp")
 	public String verifyotp(@RequestParam("email") String email,HttpSession session) {
 		System.out.println("email>>>>>>>>>s"+email);
@@ -62,8 +64,10 @@ public class ForgotController {
 			return "forgotpassword";
 		}
 		
-		//return"sentotp";
+		
 	}
+	
+	//verify OTP
 	@RequestMapping("/verifyotp")
 	public String verifyotp(@RequestParam("otp") int enteredotp, HttpSession session) {
 		// get otp and email from session stored at verifyotp method
@@ -91,6 +95,7 @@ public class ForgotController {
 		}
 
 	}
+	//Change password process handler
 	@RequestMapping("/changepass")
 	public String changepass(@RequestParam("newpassword") String newpass,
 			@RequestParam("confirmpassword") String confirmpass, HttpSession session) {
